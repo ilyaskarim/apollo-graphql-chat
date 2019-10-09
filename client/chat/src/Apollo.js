@@ -6,8 +6,10 @@ import { onError } from 'apollo-link-error';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
 
+const GRAPHQL_URI = "http://localhost:4000/graphql"
+
 export const httpLink = new HttpLink({
-  uri: "http://localhost:4000/graphql", // use https for secure endpoint
+  uri: GRAPHQL_URI, // use https for secure endpoint
 });
 
 // Create a WebSocket link:
@@ -33,6 +35,6 @@ export const link = split(
 // Instantiate client
 export const client = new ApolloClient({
   link,
-  uri: "http://localhost:4000/graphql",
+  uri: GRAPHQL_URI,
   cache: new InMemoryCache()
 })

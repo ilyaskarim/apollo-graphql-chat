@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import './App.css';
 import {useLazyQuery, useSubscription} from "@apollo/react-hooks"
 import graphql from "./graphql";
+import Conversations from "./Conversations"
 
 const MessagesListQuery =  graphql.queries.messagesList;
 const MESSAGE_SENT_SUBSCRIPTION =  graphql.subcriptions.messageSent
@@ -30,6 +31,7 @@ function App() {
         <div className="content" >
           <div className="conversationsList" >
             <h4>conversations list</h4>
+            <Conversations />
           </div>
           <div className="messages" >
             <h5></h5>

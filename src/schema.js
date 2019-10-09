@@ -6,8 +6,8 @@ module.exports = `
   }
   type Conversation {
     id: Int
-    userOne: Int
-    userTwo: Int
+    userOne: User
+    userTwo: User
   }
   type Message {
     id: Int
@@ -19,6 +19,7 @@ module.exports = `
   }
   type Query {
     messagesList: [Message]
+    conversationList: [Conversation]
   }
   type Subscription {
     messageSent: Message

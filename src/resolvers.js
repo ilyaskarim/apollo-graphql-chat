@@ -2,6 +2,7 @@ let {PubSub} = require("apollo-server");
 
 const MESSAGESENT = "MESSAGESENT";
 const CONVERSATIONCREATED = "CONVERSATIONCREATED";
+
 const pubsub = new PubSub();
 
 module.exports = {
@@ -19,7 +20,11 @@ module.exports = {
     messagesList: async function (parent, args, context) {
       const {Message} = context.database.models;
       return await Message.findAll();
-    }
+    },
+    conversationList: async function (parent, args, context) {
+      const {Conversation} = context.database.models;
+      return await Conversation.findAll();
+    },
   },
   Mutation: {
     createConversation: async function (parent, args, context) {

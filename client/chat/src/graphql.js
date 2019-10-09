@@ -8,6 +8,15 @@ export default {
           message
         }
       }
+    `,
+    conversationCreated: gql`
+      subscription {
+        conversationCreated {
+          id
+          userOne
+          userTwo
+        }
+      }
     `
   },
   queries: {
@@ -15,6 +24,15 @@ export default {
       {
         messagesList {
           message
+        }
+      }
+    `,
+    conversationList: gql`
+      {
+        conversationList {
+          id
+          userOne
+          userTwo
         }
       }
     `
