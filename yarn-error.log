@@ -1,0 +1,43 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js --verbose
+
+PATH: 
+  C:\Program Files (x86)\Python37-32\Scripts\;C:\Program Files (x86)\Python37-32\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\wamp642\bin\php\php5.6.31;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\PostgreSQL\pg11\bin;C:\Users\Illyas\AppData\Roaming\Python\Python37\Scripts;C:\laragon\bin\php\php-7.1.14-Win32-VC14-x64;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Yarn\bin\;C:\Windows\system32\ngrok.exe;C:\Program Files\nodejs\;C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\Illyas\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Illyas\AppData\Roaming\npm\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\wamp642\bin\php\php5.6.31;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\Illyas\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Illyas\AppData\Roaming\npm\node_modules\.bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\Users\Illyas\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\Illyas\AppData\Local\Programs\Microsoft VS Code\bin;%PYTHON%;C:\Users\Illyas\AppData\Local\Microsoft\WindowsApps;C:\Users\Illyas\AppData\Local\hyper\app-2.1.1\resources\bin;C:\Users\Illyas\AppData\Roaming\Composer\vendor\bin;C:\Users\Illyas\AppData\Local\Yarn\bin;C:\Windows\system32\ngrok.exe;C:\Users\Illyas\AppData\Roaming\npm;C:\wamp64\bin\php\php7.2.18;
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  10.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 104.16.17.35:80
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1106:14)
+
+npm manifest: 
+  {
+    "name": "chat",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "apollo-server": "^2.9.4",
+      "nodemon": "^1.19.3",
+      "sequelize": "^5.19.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

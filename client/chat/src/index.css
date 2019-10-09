@@ -1,0 +1,36 @@
+.header {
+  border-bottom: 1px solid black;
+  padding: 30px 0;
+}
+
+.content {
+  display: flex;
+}
+
+.content .conversationsList {
+  width: 30%;
+  height: 80vh;
+  border-right: 1px solid black;
+}
+
+.content .messages {
+  width: 70%;
+  height: 80vh;
+  position: relative;
+}
+
+.messagesForm {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+}
+.messagesForm textarea {
+  width: 90%;
+  margin: auto;
+}
+
+.messagesInnerContainer {
+  height: 400px;
+  overflow: auto;
+}

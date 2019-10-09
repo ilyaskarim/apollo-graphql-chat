@@ -1,0 +1,4 @@
+/node_modules
+/client/chat/node_modules
+*.rar
+*.zip
