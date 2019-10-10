@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from "graphql-tag";
 export default {
   subcriptions: {
     messageSent: gql`
@@ -31,10 +31,18 @@ export default {
       {
         conversationList {
           id
-          userOne
-          userTwo
+          userOne {
+            id
+            name
+            email
+          }
+          userTwo {
+            id
+            name
+            email
+          }
         }
       }
     `
   }
-}
+};
