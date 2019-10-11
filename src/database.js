@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
 
 // Option 1: Passing parameters separately
-const database = new Sequelize('chat', 'root', 'chat-app', {
+const database = new Sequelize('chat-app', 'root', '', {
   host: 'localhost',
   dialect: 'mysql'
 });
 
-database.sync({force: true});
+// database.sync({force: true});
 
 module.exports = {
   database: database,

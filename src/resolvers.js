@@ -57,5 +57,17 @@ module.exports = {
         return await User.create(args);
       }
     },
+  },
+  Conversation: {
+    userOne: async function (parent, args, context){
+    const {User} = context.database.models;
+    const finduser = await User.findOne({id: parent.userOne})
+    return finduser
+    },
+    userTwo: async function (parent, args, context){
+    const {UserTwo} = context.database.models;
+    const finduser = await User.findOne({id: parent.userTwo})
+    return finduser
+    }
   }
 }

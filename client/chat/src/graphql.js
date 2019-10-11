@@ -31,8 +31,17 @@ export default {
       {
         conversationList {
           id
-          userOne
-          userTwo
+          userOne{
+            id
+            name
+            email
+          }
+          userTwo{
+            id
+            name
+            email
+            
+          }
         }
       }
     `
