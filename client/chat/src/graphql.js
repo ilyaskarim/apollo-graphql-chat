@@ -13,8 +13,25 @@ export default {
       subscription {
         conversationCreated {
           id
-          userOne
-          userTwo
+          userOne {
+            id
+          }
+          userTwo {
+            id
+          }
+        }
+      }
+    `
+  },
+  mutation: {
+    sendMessage: gql`
+      mutation sendMessage($message: String, $sender: Int, $reciever: Int, $conversation: Int) {
+        sendMessage(input: {message: $message, sender: $sender, reciever: $reciever, conversation: $conversation}) {
+          id
+          message
+          conversation {
+            id
+          }
         }
       }
     `
@@ -31,8 +48,14 @@ export default {
       {
         conversationList {
           id
-          userOne
-          userTwo
+          userOne {
+            id
+            name
+          }
+          userTwo {
+            id
+            name
+          }
         }
       }
     `

@@ -3,24 +3,11 @@ import './App.css';
 import {useLazyQuery, useSubscription} from "@apollo/react-hooks"
 import graphql from "./graphql";
 import Conversations from "./Conversations"
+import {MessageSendForm} from "./MessageSendForm";
+import {MessagesContainer} from "./MessagesContainer"
 
-const MessagesListQuery =  graphql.queries.messagesList;
-const MESSAGE_SENT_SUBSCRIPTION =  graphql.subcriptions.messageSent
 
-function App() {
-  const [messages,setMessages] = useState([]);
-  const [getMesssages,getMessagesData] = useLazyQuery(MessagesListQuery);
-  const {data: newMessage, loading: newMessageLoading} = useSubscription(MESSAGE_SENT_SUBSCRIPTION, {});
-
-  console.log(newMessage);
-
-  useEffect(() => {
-    getMesssages();
-    setInterval(() => {
-      var messagesInnerContainer = document.querySelector(".messagesInnerContainer");
-      messagesInnerContainer.scrollTop = messagesInnerContainer.scrollHeight;
-    }, 1000);
-  },[])
+function App() {  
 
   return (
     <div className="App">
@@ -35,18 +22,8 @@ function App() {
           </div>
           <div className="messages" >
             <h5></h5>
-            {!newMessageLoading && JSON.stringify(newMessage)}
-            <div className="messagesInnerContainer" >
-              
-              {
-                (getMessagesData.data) ? getMessagesData.data.messagesList.map((message) => {
-                  return <p>{message.message}</p>
-                }) : "loading"
-              }
-            </div>
-            <div className="messagesForm" >
-              <textarea></textarea>
-            </div>
+            <MessagesContainer />
+            <MessageSendForm />
           </div>
         </div>
       </div>

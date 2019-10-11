@@ -6,7 +6,9 @@ import { onError } from 'apollo-link-error';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
 
-const GRAPHQL_URI = "http://localhost:4000/graphql"
+// const HOST = "192.168.43.165";
+const HOST = "localhost";
+const GRAPHQL_URI = `http://${HOST}:4000/graphql`
 
 export const httpLink = new HttpLink({
   uri: GRAPHQL_URI, // use https for secure endpoint
@@ -14,7 +16,7 @@ export const httpLink = new HttpLink({
 
 // Create a WebSocket link:
 export const wsLink = new WebSocketLink({
-  uri: "ws://localhost:4000/subscriptions", // use wss for a secure endpoint
+  uri: `ws://${HOST}:4000/subscriptions`, // use wss for a secure endpoint
   options: {
     reconnect: true
   }

@@ -25,7 +25,7 @@ const Conversations = () => {
       Your Conversations
       {
         (getConversationsData.data) ? [...realtimeAddedConversations,...getConversationsData.data.conversationList ].map((cc) => {
-          return <p>{cc.id}</p>
+          return <p>{cc.userOne.name} and {cc.userTwo.name}</p>
         }) : "loading"
       }
     </div>
