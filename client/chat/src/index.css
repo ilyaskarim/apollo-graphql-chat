@@ -1,6 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 .header {
+  text-align: center;
   border-bottom: 1px solid black;
-  padding: 30px 0;
+  padding: 8px 0;
+  background: #3e3e3e;
+  color: #fff;
+}
+.header h1 {
+  letter-spacing: 2px;
+  font-size: 25px;
+  padding: 10px;
+  margin: 0;
 }
 
 .content {
@@ -10,27 +24,58 @@
 .content .conversationsList {
   width: 30%;
   height: 80vh;
-  border-right: 1px solid black;
+  text-align: center;
+  border-right: 1px solid #3e3e3e;
 }
-
+.content .conversationsList h4 {
+  text-align: center;
+  font-size: 20px;
+  color: #3e3e3e;
+  margin: 0;
+  letter-spacing: 1px;
+  border-bottom: solid 1px;
+  padding: 15px 0px;
+}
+.conversations-users {
+  overflow: auto;
+  height: 100%;
+}
 .content .messages {
   width: 70%;
   height: 80vh;
   position: relative;
 }
+.content .messages h5 {
+  text-align: center;
+  font-size: 20px;
+  color: #3e3e3e;
+  margin: 0;
+  letter-spacing: 1px;
+  border-bottom: solid 1px;
+  padding: 15px 0px;
+}
 
 .messagesForm {
   position: absolute;
-  bottom: 0;
-  height: 50px;
   width: 100%;
+  display: flex;
 }
-.messagesForm textarea {
-  width: 90%;
+.messagesForm input {
+  width: 80%;
+  padding: 7px;
   margin: auto;
+}
+.messagesForm button {
+  cursor: pointer;
+  background-color: #aea19c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-right: 30px;
 }
 
 .messagesInnerContainer {
-  height: 400px;
+  height: 490px;
+  padding: 0px 30px;
   overflow: auto;
 }

@@ -37,4 +37,4 @@ module.exports = `
     createConversation(userOne: Int, userTwo: Int): Conversation
     sendMessage(input: MessageSendInput): Message
   }
-`
+`;
