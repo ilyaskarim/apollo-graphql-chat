@@ -8,15 +8,21 @@
 }
 
 .content .conversationsList {
-  width: 30%;
+  width: 20%;
   height: 80vh;
   border-right: 1px solid black;
 }
 
 .content .messages {
-  width: 70%;
+  width: 60%;
   height: 80vh;
   position: relative;
+}
+.content .usersList {
+  width: 20%;
+  height: 80vh;
+  position: relative;
+  border-left: 1px solid black;
 }
 
 .messagesForm {

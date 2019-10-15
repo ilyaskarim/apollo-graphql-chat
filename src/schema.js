@@ -17,6 +17,12 @@ module.exports = `
     reciever: User
     isRead: Boolean
   }
+  input MessageSendInput {
+    message: String
+    sender: Int 
+    reciever: Int
+    conversation: Int
+  }
   type Query {
     messagesList: [Message]
     conversationList: [Conversation]
@@ -29,6 +35,6 @@ module.exports = `
     login(email: String!): User
     signup(name: String!, email: String!): User
     createConversation(userOne: Int, userTwo: Int): Conversation
-    sendMessage(message: String, sender: Int, reciever: Int): Message
+    sendMessage(input: MessageSendInput): Message
   }
 `
