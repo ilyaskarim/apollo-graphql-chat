@@ -1,6 +1,14 @@
 import gql from "graphql-tag"
 export default {
   subcriptions: {
+    userCreated: gql`
+      subscription {
+        userCreated {
+          name
+          email
+        }
+      }
+    `,
     messageSent: gql`
       subscription {
         messageSent {
@@ -15,9 +23,13 @@ export default {
           id
           userOne {
             id
+            name
+            email
           }
           userTwo {
             id
+            name
+            email
           }
         }
       }
@@ -34,12 +46,37 @@ export default {
           }
         }
       }
+    `,
+    createConversation: gql`
+      mutation createConversation($userOne: Int, $userTwo: Int) {
+        createConversation(userOne: $userOne, userTwo: $userTwo) {
+          id
+          userOne {
+            id
+            name
+          }
+          userTwo {
+            id
+            name
+          }
+        }
+      }
     `
   },
   queries: {
-    messagesList: gql`
+    userList: gql`
       {
-        messagesList {
+        userList {
+          id
+          name
+          email
+        }
+      }
+    `,
+    messagesList: gql`
+      query messagesList($conversation: Int)  {
+        messagesList(conversation: $conversation) {
+          id
           message
         }
       }

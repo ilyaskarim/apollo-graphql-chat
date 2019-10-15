@@ -5,9 +5,12 @@ import graphql from "./graphql";
 import Conversations from "./Conversations"
 import {MessageSendForm} from "./MessageSendForm";
 import {MessagesContainer} from "./MessagesContainer"
+import {UsersList} from "./UsersList"
 
 
-function App() {  
+function App() {
+
+  const [currentConversation, setCurrentConversation] = useState(null);
 
   return (
     <div className="App">
@@ -18,12 +21,22 @@ function App() {
         <div className="content" >
           <div className="conversationsList" >
             <h4>conversations list</h4>
-            <Conversations />
+            <Conversations  setCurrentConversation={setCurrentConversation} />
           </div>
           <div className="messages" >
             <h5></h5>
-            <MessagesContainer />
-            <MessageSendForm />
+            {  
+              (currentConversation) ? (
+                <div><MessagesContainer currentConversation={currentConversation} /><MessageSendForm /></div>
+              ) : (
+                <div>
+                  Please select a converation
+                </div>
+              )
+            }
+          </div>
+          <div className="usersList" >
+            <UsersList />
           </div>
         </div>
       </div>

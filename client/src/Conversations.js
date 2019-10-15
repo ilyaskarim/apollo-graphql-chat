@@ -5,7 +5,8 @@ import graphql from "./graphql";
 const ConversationListQuery = graphql.queries.conversationList;
 const ConversationCreatedSubscription = graphql.subcriptions.conversationCreated;
 
-const Conversations = () => {
+const Conversations = (props) => {
+  const {setCurrentConversation} = props;
   const [realtimeAddedConversations, setRealtimeAddedConversations] = useState([]);
   const [getConversations,getConversationsData] = useLazyQuery(ConversationListQuery);
   const {data: newConversation, loading: newConversationLoading} = useSubscription(ConversationCreatedSubscription, {});
@@ -25,7 +26,11 @@ const Conversations = () => {
       Your Conversations
       {
         (getConversationsData.data) ? [...realtimeAddedConversations,...getConversationsData.data.conversationList ].map((cc) => {
-          return <p>{cc.userOne.name} and {cc.userTwo.name}</p>
+          return (
+            <p onClick={ () => setCurrentConversation(cc.id) } >
+              <a href="#" >{cc.userOne.name} and {cc.userTwo.name}</a>
+            </p>
+          )
         }) : "loading"
       }
     </div>

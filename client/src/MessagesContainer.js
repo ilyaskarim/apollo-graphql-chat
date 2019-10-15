@@ -5,7 +5,8 @@ import {useLazyQuery, useSubscription} from "@apollo/react-hooks"
 const MessagesListQuery =  graphql.queries.messagesList;
 const MESSAGE_SENT_SUBSCRIPTION =  graphql.subcriptions.messageSent
 
-export const MessagesContainer = () => {
+export const MessagesContainer = (props) => {
+  const {currentConversation} = props;
   const [realtimeMessages, setRealtimeMessages] = useState([]);
   const [messages,setMessages] = useState([]);
   const [getMesssages,getMessagesData] = useLazyQuery(MessagesListQuery);
@@ -26,14 +27,22 @@ export const MessagesContainer = () => {
   }
   
   useEffect(() => {
-    getMesssages();
-  },[])
+    setRealtimeMessages([]);
+    getMesssages({
+      variables: {
+        conversation: currentConversation
+      }
+    });
+  },[currentConversation])
   return (
     <div className="messagesInnerContainer" >
       {
         (getMessagesData.data) ? [...getMessagesData.data.messagesList,...realtimeMessages].map((message) => {
           return <p>{message.message}</p>
         }) : "loading"
+      }
+      {
+        (getMessagesData.data && [...getMessagesData.data.messagesList, ...realtimeMessages].length == 0) ? "No Message" : ""
       }
     </div>
   )
