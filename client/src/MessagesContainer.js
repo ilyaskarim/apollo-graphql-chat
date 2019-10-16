@@ -9,8 +9,14 @@ export const MessagesContainer = (props) => {
   const {currentConversation} = props;
   const [realtimeMessages, setRealtimeMessages] = useState([]);
   const [messages,setMessages] = useState([]);
-  const [getMesssages,getMessagesData] = useLazyQuery(MessagesListQuery);
-  const {data: newMessage, loading: newMessageLoading} = useSubscription(MESSAGE_SENT_SUBSCRIPTION, {});
+  const [getMesssages,getMessagesData] = useLazyQuery(MessagesListQuery,{
+    fetchPolicy: 'no-cache'
+  });
+  const {data: newMessage, loading: newMessageLoading} = useSubscription(MESSAGE_SENT_SUBSCRIPTION, {
+    variables: {
+      conversation: currentConversation
+    }
+  });
 
   useEffect(() => {
     if (newMessage) {
@@ -25,6 +31,7 @@ export const MessagesContainer = (props) => {
     var messagesInnerContainer = document.querySelector(".messagesInnerContainer");
     messagesInnerContainer.scrollTop = messagesInnerContainer.scrollHeight;
   }
+
   
   useEffect(() => {
     setRealtimeMessages([]);
@@ -33,7 +40,8 @@ export const MessagesContainer = (props) => {
         conversation: currentConversation
       }
     });
-  },[currentConversation])
+  },[currentConversation]);
+
   return (
     <div className="messagesInnerContainer" >
       {

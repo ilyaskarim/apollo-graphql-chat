@@ -27,7 +27,12 @@ const Conversations = (props) => {
       {
         (getConversationsData.data) ? [...realtimeAddedConversations,...getConversationsData.data.conversationList ].map((cc) => {
           return (
-            <p onClick={ () => setCurrentConversation(cc.id) } >
+            <p onClick={ () => {
+              setCurrentConversation(null);
+              setTimeout(() => {
+                setCurrentConversation(cc.id);
+              },500)
+            } } >
               <a href="#" >{cc.userOne.name} and {cc.userTwo.name}</a>
             </p>
           )

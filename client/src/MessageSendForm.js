@@ -4,7 +4,8 @@ import graphql from "./graphql";
 
 const MESSAGE_SEND_MUTATION = graphql.mutation.sendMessage;
 
-export const MessageSendForm = () => {
+export const MessageSendForm = (props) => {
+  const {currentConversation} = props;
   const [message, setMessage] = useState('');
   const [sendMessageToGraphQL, { data }] = useMutation(MESSAGE_SEND_MUTATION);
 
@@ -13,7 +14,7 @@ export const MessageSendForm = () => {
       sendMessageToGraphQL({
         variables: {
           message: message,
-          conversation: 1,
+          conversation: currentConversation,
           sender: 1,
           receiver: 1
         }

@@ -6,8 +6,8 @@ import { onError } from 'apollo-link-error';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { getMainDefinition } from 'apollo-utilities';
 
-const HOST = "192.168.43.165";
-// const HOST = "localhost";
+// const HOST = "192.168.43.165";
+const HOST = "localhost";
 const GRAPHQL_URI = `http://${HOST}:4000/graphql`
 
 export const httpLink = new HttpLink({
