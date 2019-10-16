@@ -1,37 +1,54 @@
+const { withFilter } = require('graphql-subscriptions');
 let {PubSub} = require("apollo-server");
 
 const MESSAGESENT = "MESSAGESENT";
 const CONVERSATIONCREATED = "CONVERSATIONCREATED";
+const USER_CREATED = "USER_CREATED";
 
 const pubsub = new PubSub();
 
 module.exports = {
   Subscription: {
     messageSent: {
-      // Additional event labels can be passed to asyncIterator creation
-      subscribe: () => pubsub.asyncIterator([MESSAGESENT]),
+      subscribe: withFilter(() => pubsub.asyncIterator(MESSAGESENT), (payload, variables) => {
+        return payload.conversation === variables.conversation;
+     }),
     },
     conversationCreated: {
-      // Additional event labels can be passed to asyncIterator creation
       subscribe: () => pubsub.asyncIterator([CONVERSATIONCREATED]),
+    },
+    userCreated: {
+      subscribe: () => pubsub.asyncIterator([USER_CREATED]),
     },
   },
   Query: {
     messagesList: async function (parent, args, context) {
       const {Message} = context.database.models;
+      const {conversation} = args;
       return await Message.findAll({
         order: [
-          ['id', 'DESC'],
-        ]
+          ['id', 'ASC'],
+        ],
+        where: {
+          conversation: conversation
+        }
       });
     },
     conversationList: async function (parent, args, context) {
       const {Conversation} = context.database.models;
       return await Conversation.findAll();
     },
+    userList: async function (parent, args, context) {
+      const {User} = context.database.models;
+      return await User.findAll({
+        order: [
+          ['id', 'DESC'],
+        ]
+      });
+    },
   },
   Message: {
-    conversation: async function (paret, args, context){
+    conversation: async function (parent, args, context){
       const {Conversation} = context.database.models;
       return await Conversation.findOne({id: parent.conversation});
     }
@@ -86,7 +103,9 @@ module.exports = {
       if (findUser) {
         return findUser;
       }else {
-        return await User.create(args);
+        const create = await User.create(args);;
+        pubsub.publish(USER_CREATED, { userCreated: create });
+        return create;
       }
     },
   }

@@ -27,7 +27,7 @@ function App() {
             <h5></h5>
             {  
               (currentConversation) ? (
-                <div><MessagesContainer currentConversation={currentConversation} /><MessageSendForm /></div>
+                <div><MessagesContainer currentConversation={currentConversation} /><MessageSendForm currentConversation={currentConversation} /></div>
               ) : (
                 <div>
                   Please select a converation

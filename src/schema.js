@@ -24,12 +24,14 @@ module.exports = `
     conversation: Int
   }
   type Query {
-    messagesList: [Message]
+    messagesList(conversation: Int): [Message]
     conversationList: [Conversation]
+    userList: [User]
   }
   type Subscription {
-    messageSent: Message
+    messageSent(conversation: Int): Message
     conversationCreated: Conversation
+    userCreated: User
   }
   type Mutation {
     login(email: String!): User
