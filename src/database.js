@@ -1,9 +1,9 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 // Option 1: Passing parameters separately
-const database = new Sequelize('chat', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql'
+const database = new Sequelize("chat", "root", "", {
+  host: "localhost",
+  dialect: "mysql"
 });
 
 // database.sync({force: true});
@@ -11,15 +11,15 @@ const database = new Sequelize('chat', 'root', '', {
 module.exports = {
   database: database,
   models: {
-    User: database.define('user',{
+    User: database.define("user", {
       name: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
-      },
+      }
     }),
-    Conversation: database.define("conversation",{
+    Conversation: database.define("conversation", {
       userOne: {
         type: Sequelize.INTEGER
       },
@@ -45,4 +45,4 @@ module.exports = {
       }
     })
   }
-}
+};

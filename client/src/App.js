@@ -1,45 +1,18 @@
-import React, {useState,useEffect} from 'react';
-import './App.css';
-import {useLazyQuery, useSubscription} from "@apollo/react-hooks"
-import graphql from "./graphql";
-import Conversations from "./Conversations"
-import {MessageSendForm} from "./MessageSendForm";
-import {MessagesContainer} from "./MessagesContainer"
-import {UsersList} from "./UsersList"
-
-
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import ChatSystem from "./containers/Messages/ChatSystem";
+import { LoginForm } from "./containers/Forms/LoginForm";
+import { SignUpForm } from "./containers/Forms/SignUpForm";
 function App() {
-
-  const [currentConversation, setCurrentConversation] = useState(null);
-
   return (
     <div className="App">
-      <div className="chatlayout" >
-        <div className="header" >
-          Chat System
+      <Router>
+        <div>
+          <Route path="/" exact component={ChatSystem} />
+          <Route path="/login/" component={LoginForm} />
+          <Route path="/sign-up/" component={SignUpForm} />
         </div>
-        <div className="content" >
-          <div className="conversationsList" >
-            <h4>conversations list</h4>
-            <Conversations  setCurrentConversation={setCurrentConversation} />
-          </div>
-          <div className="messages" >
-            <h5></h5>
-            {  
-              (currentConversation) ? (
-                <div><MessagesContainer currentConversation={currentConversation} /><MessageSendForm currentConversation={currentConversation} /></div>
-              ) : (
-                <div>
-                  Please select a converation
-                </div>
-              )
-            }
-          </div>
-          <div className="usersList" >
-            <UsersList />
-          </div>
-        </div>
-      </div>
+      </Router>
     </div>
   );
 }

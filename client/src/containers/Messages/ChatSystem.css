@@ -1,0 +1,138 @@
+.ChatSystem {
+  position: relative;
+}
+.header {
+  text-align: center;
+  border-bottom: 1px solid #3e3e3e;
+  padding: 8px 0;
+  background: #3e3e3e;
+  color: #fff;
+}
+.header h1 {
+  letter-spacing: 2px;
+  font-size: 25px;
+  padding: 10px;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+}
+
+.content .conversationsList {
+  width: 30%;
+  height: 80vh;
+  text-align: center;
+  border-right: 1px solid #3e3e3e;
+}
+.content .conversationsList h4 {
+  text-align: center;
+  font-size: 20px;
+  color: #3e3e3e;
+  margin: 0;
+  letter-spacing: 1px;
+  border-bottom: solid 1px;
+  padding: 15px 0px;
+}
+
+.content .messages {
+  width: 60%;
+  height: 80vh;
+  position: relative;
+}
+.content .messages h5 {
+  text-align: center;
+  font-size: 20px;
+  color: #3e3e3e;
+  margin: 0;
+  letter-spacing: 1px;
+  border-bottom: solid 1px;
+  padding: 15px 0px;
+}
+
+.content .usersList {
+  width: 20%;
+  height: 80vh;
+  text-align: center;
+  position: relative;
+  border-left: 1px solid #3e3e3e;
+}
+.content .usersList h5 {
+  text-align: center;
+  font-size: 20px;
+  color: #3e3e3e;
+  margin: 0;
+  letter-spacing: 1px;
+  border-bottom: solid 1px;
+  padding: 15px 0px;
+}
+
+.messagesForm {
+  position: absolute;
+  width: 100%;
+  display: flex;
+}
+.messagesForm input {
+  width: 70%;
+  padding: 7px;
+  margin: auto;
+}
+.messagesForm button {
+  cursor: pointer;
+  background-color: #3e3e3e;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-right: 40px;
+}
+
+.messagesInnerContainer {
+  height: 490px;
+  padding: 0px 30px;
+  overflow: auto;
+}
+
+.conversations-users {
+  overflow: auto;
+  height: 100%;
+}
+.h3 {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 17px;
+  margin: 0;
+  font-weight: 500;
+  border-bottom: dotted 1px #3e3e3e;
+  color: #3e3e3e;
+}
+.h2 {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 20px;
+  margin: 0;
+  font-weight: 500;
+  color: #3e3e3e;
+}
+.number {
+  margin-right: 15px;
+  font-weight: 700;
+}
+.p {
+  padding: 6px 0;
+  margin: 0;
+  letter-spacing: 0.7px;
+}
+.a {
+  list-style-type: none;
+  text-decoration: none;
+  font-size: 15px;
+  color: #3e3e3e;
+  font-weight: 600;
+}
+.a:active {
+  color: #1919c5;
+}
+.a:focus {
+  color: #1919c5;
+}

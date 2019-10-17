@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from "graphql-tag";
 export default {
   subcriptions: {
     userCreated: gql`
@@ -35,15 +35,47 @@ export default {
       }
     `
   },
+
   mutation: {
     sendMessage: gql`
-      mutation sendMessage($message: String, $sender: Int, $reciever: Int, $conversation: Int) {
-        sendMessage(input: {message: $message, sender: $sender, reciever: $reciever, conversation: $conversation}) {
+      mutation sendMessage(
+        $message: String
+        $sender: Int
+        $reciever: Int
+        $conversation: Int
+      ) {
+        sendMessage(
+          input: {
+            message: $message
+            sender: $sender
+            reciever: $reciever
+            conversation: $conversation
+          }
+        ) {
           id
           message
           conversation {
             id
           }
+        }
+      }
+    `,
+    loginFrom: gql`
+      mutation LoginUser($email: String!, $password: String) {
+        login(email: $email, password: $password) {
+          email
+          password
+          token
+        }
+      }
+    `,
+    signUpFrom: gql`
+      mutation SignUpUser($email: String!, $password: String) {
+        signUp(email: $email, password: $password, username: $username) {
+          username
+          email
+          password
+          token
         }
       }
     `,
@@ -74,7 +106,7 @@ export default {
       }
     `,
     messagesList: gql`
-      query messagesList($conversation: Int)  {
+      query messagesList($conversation: Int) {
         messagesList(conversation: $conversation) {
           id
           message
@@ -97,4 +129,4 @@ export default {
       }
     `
   }
-}
+};
