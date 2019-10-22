@@ -36,6 +36,24 @@ export default {
     `
   },
   mutation: {
+    login: gql`
+      mutation login($email: String!) {
+        login(email: $email) {
+          id
+          name
+          email
+        }
+      }
+    `,
+    signup: gql`
+      mutation signup($name: String!, $email: String!) {
+        signup(name: $name,email: $email) {
+          name
+          id
+          email
+        }
+      }
+    `,
     sendMessage: gql`
       mutation sendMessage($message: String, $sender: Int, $reciever: Int, $conversation: Int) {
         sendMessage(input: {message: $message, sender: $sender, reciever: $reciever, conversation: $conversation}) {
