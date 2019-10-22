@@ -1,47 +1,60 @@
-import React, {useState,useEffect} from 'react';
-import './App.css';
-import {useLazyQuery, useSubscription} from "@apollo/react-hooks"
-import graphql from "./graphql";
-import Conversations from "./Conversations"
-import {MessageSendForm} from "./MessageSendForm";
-import {MessagesContainer} from "./MessagesContainer"
-import {UsersList} from "./UsersList"
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+import {Home} from "./Home";
+import Messages from "./Messages";
+import Auth from "./auth";
 
 
 function App() {
+  
+  const id = window.localStorage.id;
 
-  const [currentConversation, setCurrentConversation] = useState(null);
+  const hasLoggedin = (id) ? id.constructor == String : false;
 
   return (
-    <div className="App">
-      <div className="chatlayout" >
-        <div className="header" >
-          Chat System
-        </div>
-        <div className="content" >
-          <div className="conversationsList" >
-            <h4>conversations list</h4>
-            <Conversations  setCurrentConversation={setCurrentConversation} />
-          </div>
-          <div className="messages" >
-            <h5></h5>
-            {  
-              (currentConversation) ? (
-                <div><MessagesContainer currentConversation={currentConversation} /><MessageSendForm currentConversation={currentConversation} /></div>
-              ) : (
-                <div>
-                  Please select a converation
-                </div>
-              )
-            }
-          </div>
-          <div className="usersList" >
-            <UsersList />
-          </div>
-        </div>
+    <Router>
+    <div>
+      <nav>
+        <ul>
+          { hasLoggedin && <li>
+            <Link to="/messages">Messages</Link>
+          </li> }
+          <li>
+            <Link to="/auth">Auth</Link>
+          </li>
+          { hasLoggedin && <li>
+            <Link to="/">Home</Link>
+          </li> }
+          <li>
+            <a href="#" onClick={ () => {window.localStorage.clear(); window.location.reload()} } >Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div className="header" >
+
       </div>
+      <Switch>
+        <Route path="/messages">
+          <Messages />
+        </Route>
+        <Route path="/auth">
+          <Auth />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
     </div>
-  );
+  </Router>
+  )
 }
 
 export default App;

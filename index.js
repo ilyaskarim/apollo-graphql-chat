@@ -11,8 +11,11 @@ const server = new ApolloServer({
   subscriptions: {
     path: '/subscriptions'
   },
-  context: {
-    database
+  context: ({req,res}) => {
+    console.log(req.headers.authorization)
+    return {
+      database
+    }
   }
 });
 
